@@ -1,0 +1,1480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Enzymes in Chemistry</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@500;700&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f2faff; --bg2:#dff2fc; --ink:#0f2a43; --muted:#4a6680; --card:#ffffff; --line:#c5e3f4;
+  --accent:#1f78d1; --accent-ink:#ffffff; --pop:#ff6b5e; --hero:#a9def2;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0b1c2e; --bg2:#10283f; --ink:#e8f5fd; --muted:#9bb7cc; --card:#142f49; --line:#244a6b; --accent:#5fb0f5; --accent-ink:#06192b; --pop:#ff8a7d; --hero:#12324f;}
+}
+:root[data-theme="dark"]{--bg:#0b1c2e; --bg2:#10283f; --ink:#e8f5fd; --muted:#9bb7cc; --card:#142f49; --line:#244a6b; --accent:#5fb0f5; --accent-ink:#06192b; --pop:#ff8a7d; --hero:#12324f;}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Nunito",system-ui,sans-serif;font-size:1.1rem;line-height:1.65}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--card);z-index:30}
+h1,h2,h3{font-family:"Fredoka",system-ui,sans-serif;font-weight:600;line-height:1.1;margin:0 0 .4em}
+h1{font-size:clamp(3.2rem,10vw,6.5rem)}
+h2{font-size:clamp(2rem,5vw,3.2rem)}
+h3{font-size:1.45rem}
+p{margin:0 0 1em;max-width:40em}
+sub{font-size:.72em;line-height:0;vertical-align:baseline;position:relative;bottom:-.25em}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+section{padding:clamp(56px,10vw,110px) 0}
+.alt{background:var(--bg2)}
+.lead{font-size:1.25rem;color:var(--muted)}
+svg.i{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:40;background:var(--card);border-bottom:1px solid var(--line)}
+.theme-toggle-row{max-width:1080px;margin:0 auto;padding:8px 22px 0;display:flex;justify-content:flex-end;height:42px}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:"Fredoka",sans-serif;font-weight:600;font-size:1.35rem;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo svg{color:var(--pop)}
+nav ul{list-style:none;display:flex;gap:6px;margin:0;padding:0}
+nav a{display:block;padding:8px 14px;border-radius:99px;color:var(--ink);text-decoration:none;font-weight:700;font-size:1rem}
+nav a:hover{background:var(--bg2)}
+nav a.on{background:var(--accent);color:var(--accent-ink)}
+#menu{display:none;background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;width:44px;height:44px;cursor:pointer;align-items:center;justify-content:center}
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:9px 14px;border:1px solid var(--line);border-radius:999px;background:var(--bg2);color:var(--ink);font:700 .95rem "Nunito",sans-serif;cursor:pointer;white-space:nowrap}
+.theme-toggle:hover{filter:brightness(.96)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pop);outline-offset:2px}
+@media (max-width:760px){
+  #menu{display:flex}
+  nav{position:absolute;left:0;right:0;top:106px;background:var(--card);border-bottom:1px solid var(--line);display:none;padding:10px 16px 16px}
+  nav.open{display:block}
+  nav ul{flex-direction:column}
+  nav a{padding:12px 14px}
+}
+
+/* buttons */
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:1.4em}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:99px;font-weight:700;text-decoration:none;font-size:1.05rem;background:var(--accent);color:var(--accent-ink);border:2px solid var(--accent)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn:hover{filter:brightness(1.08)}
+
+/* hero */
+.hero{background:var(--hero);padding:clamp(48px,9vw,100px) 0}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero p.lead{color:var(--ink);opacity:.85}
+.by{display:inline-flex;align-items:center;gap:10px;background:var(--card);border-radius:99px;padding:8px 18px;font-weight:700;font-size:1rem}
+.art{width:100%;max-width:440px;justify-self:center}
+@media (max-width:820px){.hero .wrap{grid-template-columns:1fr}.art{max-width:320px}}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:2em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:28px}
+.card p{margin:0;color:var(--muted)}
+.ico{width:54px;height:54px;border-radius:16px;background:var(--accent);color:var(--accent-ink);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ico.pop{background:var(--pop);color:#fff}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+@media (max-width:820px){.two{grid-template-columns:1fr}}
+
+/* reaction */
+.steps{display:flex;align-items:stretch;gap:10px;margin:2em 0 1em;flex-wrap:wrap}
+.step{flex:1 1 170px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;text-align:center}
+.step b{display:block;font-family:"Fredoka",sans-serif;font-size:1.3rem}
+.step span{color:var(--muted);font-size:.95rem}
+.arrow{align-self:center;font-size:1.8rem;color:var(--pop);font-weight:700}
+@media (max-width:640px){.arrow{display:none}}
+.formula{display:inline-block;background:var(--card);border-left:6px solid var(--pop);border-radius:12px;padding:12px 20px;font-family:"Fredoka",sans-serif;font-size:clamp(1.15rem,3vw,1.7rem);margin:.4em 0 1em}
+
+/* deep dive */
+.feature{display:grid;grid-template-columns:auto 1fr;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:clamp(22px,4vw,38px);margin-top:24px}
+.feature .ico{width:72px;height:72px;border-radius:22px;margin:0}
+.feature ul{margin:0;padding:0;list-style:none}
+.feature li{padding:10px 0 10px 28px;position:relative;border-top:1px solid var(--line)}
+.feature li:first-child{border-top:0}
+.feature li::before{content:"";position:absolute;left:0;top:1.05em;width:12px;height:12px;border-radius:50%;background:var(--pop)}
+@media (max-width:640px){.feature{grid-template-columns:1fr}}
+
+/* summary + footer */
+.take{counter-reset:t}
+.take .card{position:relative}
+footer{background:var(--ink);color:#e8f5fd;text-align:center;padding:64px 0 48px}
+footer h2{margin-bottom:.2em}
+footer p{margin:0 auto 1.2em;color:#a9c7dd}
+footer .btn{background:#fff;color:#0f2a43;border-color:#fff}
+.step{transition:border-color .3s,background .3s}
+.step.on{border-color:var(--pop);border-width:2px;background:var(--bg2)}
+.viz-sec{padding-top:0}
+.viz{padding:clamp(20px,4vw,36px)}
+.viz p.cap{min-height:3.3em;color:var(--ink)}
+#vizsvg{width:100%;height:auto;display:block;margin:10px 0;color:var(--ink)}
+#vizsvg .sub{transform:translate(470px,130px);transition:transform 1s ease}
+#vizsvg[data-stage="1"] .sub,#vizsvg[data-stage="2"] .sub{transform:translate(202px,130px)}
+#vizsvg .pa,#vizsvg .pb{transition:transform 1s ease .2s}
+#vizsvg[data-stage="2"] .pa{transform:translate(150px,-70px)}
+#vizsvg[data-stage="2"] .pb{transform:translate(150px,70px)}
+#vizsvg .site,#vizsvg .ts{transition:opacity .4s}
+#vizsvg:not([data-stage="0"]) .site,#vizsvg:not([data-stage="0"]) .ts{opacity:0}
+.btn{cursor:pointer;font-family:inherit}
+.btn:disabled{opacity:.4;cursor:default}
+.qhead{color:var(--muted);font-weight:700;margin-bottom:.4em}
+.opt{display:block;width:100%;text-align:left;padding:14px 18px;margin:10px 0;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:#2e9e5b;background:#2e9e5b24}
+.opt.no{border-color:var(--pop);background:#ff6b5e24}
+.fb{margin:14px 0 0;font-weight:700}
+.score{font-family:"Fredoka",sans-serif;font-size:clamp(2.4rem,7vw,4rem);margin:0}
+
+/* Calm green, cream and warm accent palette */
+:root{--bg:#f5f8f6;--bg2:#e8f1ed;--ink:#203b36;--muted:#526d66;--card:#fff;--line:#d2e1da;--accent:#477d70;--accent-ink:#fff;--pop:#d99a62;--hero:#dcebe4}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink)}
+header{background:var(--card);backdrop-filter:none}
+body::before{background:var(--card)}
+nav{background:var(--card)}
+.hero{background:var(--hero)}
+h1,h2,h3,.logo{font-family:"Nunito",system-ui,sans-serif;font-weight:800}
+h2{text-shadow:none}
+h2::after{content:"";display:block;width:52px;height:4px;margin-top:12px;border-radius:4px;background:var(--pop)}
+.glitch{animation:none;text-shadow:none}
+.art{animation:none;filter:none}
+.card,.feature,.step,.by{backdrop-filter:none}
+.card,.feature,.step{transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.card:hover,.feature:hover{border-color:var(--accent);box-shadow:0 6px 18px #203b3610}
+.btn{box-shadow:none;transition:transform .2s,background .2s}
+.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:none}
+.btn.ghost{box-shadow:none;border-color:var(--accent);color:var(--ink)}
+.formula{background:var(--bg2);box-shadow:none;color:var(--ink)}
+.rv{opacity:1;transform:none}
+footer{background:#203b36;color:#fff;border-top:1px solid var(--line)}
+footer p{color:#e0ece6}
+.protein-figure{display:block;width:100%;max-width:300px;height:auto;margin:18px auto 8px}
+.protein-caption{text-align:center;color:var(--muted);font-size:.88rem;margin:0 auto 8px}
+.protein-figure .strand{stroke-dasharray:360;stroke-dashoffset:0;transition:stroke-dashoffset 1s ease}
+.feature:hover .protein-figure .strand{stroke-dashoffset:24}
+.game-card{max-width:760px;margin-top:24px}
+.game-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}
+.game-options .opt{margin:0;text-align:center}
+.opt{display:block;width:100%;text-align:left;padding:14px 18px;margin:10px 0;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt:disabled{cursor:default;opacity:1}
+.opt.ok{border-color:#2e9e5b;background:#2e9e5b18}
+.opt.no{border-color:var(--pop);background:#d99a6218}
+.fb{margin:14px 0 0;font-weight:700}
+.game-score{color:var(--muted);font-weight:800;margin-top:14px}
+@media(max-width:620px){.game-options{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+
+
+/* Professional website refinement */
+:root{
+  --bg:#f7f9f8;
+  --bg2:#edf3f0;
+  --ink:#1d332e;
+  --muted:#60736d;
+  --card:#ffffff;
+  --line:#dce6e1;
+  --accent:#356b5d;
+  --accent-ink:#ffffff;
+  --pop:#c58b58;
+  --hero:#e7f0eb;
+}
+html{scroll-padding-top:90px}
+body{
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  font-size:16px;
+  line-height:1.75;
+  letter-spacing:.005em;
+  background:var(--bg);
+}
+.wrap{max-width:1160px;padding-left:28px;padding-right:28px}
+header{
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 3px 18px rgba(29,51,46,.045);
+  backdrop-filter:blur(14px);
+}
+.bar{height:76px}
+.logo{
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  font-size:1.12rem;
+  font-weight:800;
+  letter-spacing:-.035em;
+}
+.logo svg{color:var(--accent)}
+nav ul{gap:2px}
+nav a{
+  font-size:.88rem;
+  font-weight:650;
+  color:#435b53;
+  padding:9px 11px;
+  border-radius:8px;
+  transition:background .2s,color .2s;
+}
+nav a:hover{background:#edf3f0;color:var(--accent)}
+nav a.on{background:var(--accent);color:white}
+h1,h2,h3,.logo,.step b,.formula,.score{
+  font-family:Inter,"Segoe UI",Arial,sans-serif;
+  letter-spacing:-.045em;
+}
+h1{
+  max-width:720px;
+  font-size:clamp(3.6rem,8vw,6.2rem);
+  line-height:.98;
+  font-weight:800;
+  letter-spacing:-.075em;
+}
+h2{
+  font-size:clamp(1.9rem,4vw,2.7rem);
+  line-height:1.12;
+  font-weight:760;
+  letter-spacing:-.055em;
+  margin-bottom:22px;
+}
+h2::after{width:38px;height:3px;margin-top:16px}
+h3{font-size:1.22rem;font-weight:750;letter-spacing:-.025em}
+p{max-width:68ch}
+.lead{font-size:1.15rem;line-height:1.65;color:#536b62}
+section{padding:clamp(68px,8vw,104px) 0}
+.hero{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(120deg,#edf4f0 0%,#e2eee8 60%,#dce9e2 100%);
+  padding:clamp(76px,10vw,128px) 0;
+}
+.hero .wrap{grid-template-columns:1.1fr .9fr;gap:64px}
+.hero .lead{max-width:570px;color:#536b62;opacity:1}
+.hero .by{
+  background:#fff;
+  color:#426257;
+  border:1px solid #d8e5de;
+  border-radius:6px;
+  padding:7px 12px;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.11em;
+}
+.hero .by svg{width:18px;height:18px}
+.hero .term{color:#557168;font-size:.92rem;min-height:1.5em}
+.hero .wrap>div>p:not(.by):not(.lead):not(.term){color:#718078;font-size:.9rem}
+.art{max-width:430px}
+.btns{gap:12px;margin-top:30px}
+.btn{
+  border-radius:8px;
+  padding:12px 19px;
+  font-size:.92rem;
+  font-weight:750;
+  box-shadow:none;
+}
+.btn.ghost{background:transparent;border:1px solid #9db5aa;color:#315d50}
+.btn:hover:not(:disabled){transform:translateY(-2px);filter:none;box-shadow:0 7px 18px rgba(29,51,46,.09)}
+.card,.feature,.step{
+  border:1px solid var(--line);
+  border-radius:14px;
+  box-shadow:0 5px 20px rgba(29,51,46,.035);
+}
+.card{padding:30px}
+.card:hover,.feature:hover{
+  transform:translateY(-3px);
+  border-color:#b7cec2;
+  box-shadow:0 12px 28px rgba(29,51,46,.07);
+}
+.ico{border-radius:12px;background:#e7f0eb;color:#356b5d}
+.ico.pop{background:#f4e9de;color:#98683f}
+.two{gap:64px}
+.steps{gap:14px}
+.step{border-radius:12px;padding:22px;background:#fff}
+.step b{font-size:1.12rem;font-weight:750}
+.step span{font-size:.88rem;color:var(--muted)}
+.arrow{color:var(--accent)}
+.formula{
+  border-left:3px solid var(--pop);
+  border-radius:8px;
+  padding:13px 18px;
+  font-size:1.12rem;
+}
+.feature{
+  border-radius:16px;
+  padding:clamp(24px,4vw,38px);
+  gap:28px;
+}
+.feature .ico{width:60px;height:60px;border-radius:14px}
+.feature li{font-size:.97rem;padding:12px 0 12px 25px}
+.feature li::before{width:8px;height:8px;top:1.55em;background:var(--pop)}
+.protein-figure{max-width:280px}
+.protein-caption{font-size:.82rem}
+.game-card{max-width:820px}
+.opt{
+  border:1px solid var(--line);
+  border-radius:9px;
+  background:#fff;
+  padding:13px 16px;
+  font-size:.96rem;
+  transition:border-color .2s,background .2s,transform .2s;
+}
+.opt:hover:not(:disabled){border-color:var(--accent);background:#f5f9f6;transform:translateY(-1px)}
+.opt.ok{border-color:#4b8a69;background:#edf6ef}
+.opt.no{border-color:#c58b58;background:#fbf2e9}
+.qhead{font-size:.88rem;letter-spacing:.02em}
+.game-score{font-size:.9rem}
+.score{font-weight:800;letter-spacing:-.06em}
+footer{
+  background:#1d332e;
+  padding:68px 0 56px;
+  text-align:left;
+}
+footer .wrap{max-width:1160px}
+footer h2{font-size:2rem}
+footer h2::after{display:none}
+footer p{margin-left:0;color:#c4d3cc}
+footer .btn{background:#fff;color:#1d332e;border-color:#fff}
+.alt{background:#edf3f0}
+#menu{border-radius:8px}
+@media(max-width:760px){
+  .wrap{padding-left:20px;padding-right:20px}
+  .bar{height:68px}
+  nav{top:68px}
+  .hero .wrap{grid-template-columns:1fr;gap:34px}
+  .hero{padding:70px 0}
+  .art{max-width:300px}
+  .two{gap:24px}
+  nav a{font-size:.95rem}
+}
+@media(min-width:761px){
+  nav a{white-space:nowrap}
+}
+
+
+/* Enzyme matching game */
+.game-topline{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.game-topline p{margin:0}
+.game-status{margin:12px 0 20px;padding:12px 15px;border-radius:9px;background:var(--bg2);color:var(--ink);font-weight:700}
+.match-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px}
+.match-column h3{margin-bottom:12px}
+.enzyme-pieces,.match-targets{display:grid;gap:10px}
+.enzyme-piece,.match-target{width:100%;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);font:inherit;text-align:left;padding:13px 15px}
+.enzyme-piece{font-weight:800;cursor:grab;box-shadow:0 3px 10px rgba(29,51,46,.04);transition:transform .15s,border-color .15s,background .15s}
+.enzyme-piece:hover,.enzyme-piece.selected{border-color:var(--accent);background:#edf5f0;transform:translateY(-1px)}
+.enzyme-piece:active{cursor:grabbing}
+.enzyme-piece.used{opacity:.38;cursor:default;text-decoration:line-through;transform:none}
+.match-target{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;transition:border-color .15s,background .15s}
+.match-target.drag-over{border:2px dashed var(--accent);background:#edf5f0}
+.match-target.matched{border-color:#4b8a69;background:#edf6ef;cursor:default}
+.target-copy{font-weight:650;line-height:1.4}
+.target-result{flex:none;color:var(--muted);font-size:.78rem;font-weight:750;text-align:right}
+.match-target.matched .target-result{color:#36734f}
+.game-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.game-finish{margin:16px 0 0;padding:15px;border-radius:10px;background:#edf6ef;color:#285a3b;font-weight:800}
+@media(max-width:760px){.match-layout{grid-template-columns:1fr}.match-target{min-height:68px}}
+
+
+/* Temperature experiment */
+.temp-panel{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch;margin-top:24px}
+.temp-control{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px}
+.temp-reading{font-size:2.3rem;font-weight:800;letter-spacing:-.05em;line-height:1.1}
+.temp-control input[type=range]{width:100%;accent-color:var(--accent);margin:14px 0 8px}
+.temp-presets{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 18px}
+.temp-presets .btn{padding:8px 14px;font-size:.85rem}
+.activity-track{height:14px;background:#e3ebe6;border-radius:99px;overflow:hidden;margin:12px 0 8px}
+.activity-fill{height:100%;width:0;border-radius:99px;background:var(--accent);transition:width .25s}
+.denature-stage{min-height:240px;border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#fff;transition:background .3s}
+.protein-shape{width:min(260px,85%);height:auto;overflow:visible}
+.chart-card{margin-top:24px;padding:22px}
+#tempChart{width:100%;height:auto;display:block;color:var(--ink);touch-action:pan-y;cursor:crosshair;user-select:none}
+#tempChart text{fill:currentColor;font-size:13px;font-family:inherit}
+.temp-note{color:var(--muted);font-size:.92rem}
+@media(max-width:760px){.temp-panel{grid-template-columns:1fr}}
+
+/* Interactive enzyme conditions explorer */
+.condition-explorer{margin:34px 0;padding:clamp(20px,4vw,34px);border:1px solid var(--line);border-radius:24px;background:var(--card);box-shadow:0 8px 28px #203b360b}
+.condition-explorer .enzyme-tabs{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.condition-explorer .enzyme-tab{border:2px solid var(--line);border-radius:999px;padding:10px 18px;background:var(--bg);color:var(--ink);font:inherit;font-weight:800;cursor:pointer}
+.condition-explorer .enzyme-tab[aria-pressed="true"]{background:var(--ink);color:white;border-color:var(--ink)}
+.condition-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.condition-control,.condition-result{padding:20px;border:1px solid var(--line);border-radius:18px;background:var(--bg)}
+.condition-control label{display:flex;justify-content:space-between;gap:12px;font-weight:800}
+.condition-control input[type=range]{width:100%;accent-color:var(--accent);margin:18px 0 8px}
+.condition-value{font-family:"Nunito",sans-serif;font-size:1.5rem;font-weight:900;color:var(--accent)}
+.condition-meter{height:14px;border-radius:99px;background:var(--line);overflow:hidden;margin:12px 0}
+.condition-meter span{display:block;height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .25s}
+.condition-result h3{margin:0 0 8px}
+.condition-status{font-weight:900;font-size:1.1rem}
+.condition-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.condition-fact{padding:12px;border-radius:12px;background:var(--card)}
+.condition-fact small{display:block;color:var(--muted)}
+.condition-note{font-size:.92rem;color:var(--muted);margin:12px 0 0}
+@media(max-width:680px){.condition-grid{grid-template-columns:1fr}.condition-facts{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.condition-meter span{transition:none}}
+
+
+/* Improved night mode: keep every section, card, control and label readable */
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#101923;
+  --bg2:#172635;
+  --ink:#f1f6fb;
+  --muted:#bdcbd8;
+  --card:#1d2d3d;
+  --line:#405466;
+  --accent:#78b9ee;
+  --accent-ink:#102033;
+  --pop:#f0b47d;
+  --hero:#20384b;
+}
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] section,
+:root[data-theme="dark"] .alt{background:var(--bg);color:var(--ink)}
+:root[data-theme="dark"] header,
+:root[data-theme="dark"] nav,
+:root[data-theme="dark"] .card,
+:root[data-theme="dark"] .feature,
+:root[data-theme="dark"] .step,
+:root[data-theme="dark"] .by,
+:root[data-theme="dark"] .temp-control,
+:root[data-theme="dark"] .denature-stage,
+:root[data-theme="dark"] .condition-explorer,
+:root[data-theme="dark"] .condition-control,
+:root[data-theme="dark"] .condition-result,
+:root[data-theme="dark"] .condition-fact{background:var(--card);color:var(--ink);border-color:var(--line)}
+:root[data-theme="dark"] .hero{background:linear-gradient(120deg,#20384b 0%,#1b3042 60%,#172a3b 100%)}
+:root[data-theme="dark"] .hero .lead,
+:root[data-theme="dark"] .lead,
+:root[data-theme="dark"] .hero .term,
+:root[data-theme="dark"] .hero .wrap>div>p:not(.by):not(.lead):not(.term),
+:root[data-theme="dark"] .qhead,
+:root[data-theme="dark"] .step span,
+:root[data-theme="dark"] .temp-note,
+:root[data-theme="dark"] .condition-note,
+:root[data-theme="dark"] .condition-fact small{color:var(--muted)}
+:root[data-theme="dark"] nav a{color:var(--ink)}
+:root[data-theme="dark"] nav a:hover,
+:root[data-theme="dark"] .enzyme-piece:hover,
+:root[data-theme="dark"] .enzyme-piece.selected,
+:root[data-theme="dark"] .match-target.drag-over{background:#294257;color:var(--ink)}
+:root[data-theme="dark"] nav a.on{background:var(--accent);color:var(--accent-ink)}
+:root[data-theme="dark"] .opt,
+:root[data-theme="dark"] .enzyme-piece,
+:root[data-theme="dark"] .match-target{background:#172635;color:var(--ink);border-color:var(--line)}
+:root[data-theme="dark"] .opt:hover:not(:disabled){background:#294257}
+:root[data-theme="dark"] .opt.ok,
+:root[data-theme="dark"] .match-target.matched{background:#1d4438;border-color:#65b58b;color:#e7fff1}
+:root[data-theme="dark"] .opt.no{background:#493329;border-color:#d99a76;color:#fff0e8}
+:root[data-theme="dark"] .game-status{background:#26394a;color:var(--ink)}
+:root[data-theme="dark"] .game-finish{background:#1d4438;color:#e7fff1}
+:root[data-theme="dark"] .activity-track{background:#405466}
+:root[data-theme="dark"] .formula{background:#26394a;color:var(--ink)}
+:root[data-theme="dark"] .btn.ghost{color:var(--ink);border-color:var(--accent)}
+:root[data-theme="dark"] .ico{background:#294257;color:#c7e5ff}
+:root[data-theme="dark"] .ico.pop{background:#493a30;color:#ffd2a8}
+:root[data-theme="dark"] footer{background:#0b121a;color:#f1f6fb;border-color:var(--line)}
+:root[data-theme="dark"] footer p{color:#bdcbd8}
+:root[data-theme="dark"] footer .btn{background:#f1f6fb;color:#102033;border-color:#f1f6fb}
+:root[data-theme="dark"] .theme-toggle{background:#26394a;color:#f1f6fb;border-color:#60788c}
+:root[data-theme="dark"] .condition-explorer .enzyme-tab{background:#172635;color:var(--ink);border-color:var(--line)}
+:root[data-theme="dark"] .condition-explorer .enzyme-tab[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+:root[data-theme="dark"] .protein-caption{color:var(--muted)}
+:root[data-theme="dark"] svg text[fill="#203b36"],
+:root[data-theme="dark"] svg text[fill="#526d66"],
+:root[data-theme="dark"] svg text[fill="#0f2a43"]{fill:#edf5fc}
+:root[data-theme="dark"] .protein-figure path[stroke="#203b36"]{stroke:#d6e3ee}
+:root[data-theme="dark"] .protein-figure path[stroke="#71815c"]{stroke:#a9c18e}
+:root[data-theme="dark"] .protein-figure path[stroke="#477d70"]{stroke:#82c7ad}
+:root[data-theme="dark"] .protein-figure path[stroke="#557b9b"]{stroke:#a9c8e5}
+
+/* Extra contrast for the temperature experiment in night mode */
+:root[data-theme="dark"] .denature-stage{background:var(--card);border-color:var(--line)}
+:root[data-theme="dark"] .denature-stage strong{color:#ffffff;font-size:1.08rem}
+:root[data-theme="dark"] .denature-stage .temp-note{color:#e0eaf3}
+:root[data-theme="dark"] #enzSite{stroke:#ffd078}
+:root[data-theme="dark"] #enzSub{fill:#f4c95d;stroke:#ffffff}
+:root[data-theme="dark"] #tempChart text{fill:#f3f7fb}
+:root[data-theme="dark"] #tempChart rect{opacity:.28}
+:root[data-theme="dark"] #tempChart path#cCurve{stroke:#78dfb2}
+:root[data-theme="dark"] #tempChart path#cArea{fill:#78dfb2;opacity:.25}
+:root[data-theme="dark"] #tempChart line#cCursor{stroke:#ffd078}
+:root[data-theme="dark"] #tempChart circle#cDot{fill:#ffd078;stroke:#ffffff}
+:root[data-theme="dark"] #tempChart g[stroke="var(--line)"]{stroke:#6b8296}
+:root[data-theme="dark"] .temp-control label,
+:root[data-theme="dark"] .temp-control strong,
+:root[data-theme="dark"] .chart-card h3,
+:root[data-theme="dark"] #activityLabel{color:#f3f7fb}
+:root[data-theme="dark"] .temp-control .temp-note{color:#d6e2ed}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark}}
+
+
+
+/* Final night-mode text visibility fix: override hard-coded light-theme text colours */
+:root[data-theme="dark"] body,
+:root[data-theme="dark"] body p,
+:root[data-theme="dark"] body li,
+:root[data-theme="dark"] body span,
+:root[data-theme="dark"] body label,
+:root[data-theme="dark"] body small,
+:root[data-theme="dark"] body strong,
+:root[data-theme="dark"] body b,
+:root[data-theme="dark"] body h1,
+:root[data-theme="dark"] body h2,
+:root[data-theme="dark"] body h3,
+:root[data-theme="dark"] body h4,
+:root[data-theme="dark"] body a,
+:root[data-theme="dark"] body .target-copy,
+:root[data-theme="dark"] body .condition-status,
+:root[data-theme="dark"] body .condition-value,
+:root[data-theme="dark"] body .temp-reading,
+:root[data-theme="dark"] body .viz p.cap {
+  color: #f7fbff !important;
+}
+:root[data-theme="dark"] body .lead,
+:root[data-theme="dark"] body .temp-note,
+:root[data-theme="dark"] body .condition-note,
+:root[data-theme="dark"] body .condition-fact small,
+:root[data-theme="dark"] body .step span,
+:root[data-theme="dark"] body footer p,
+:root[data-theme="dark"] body .protein-caption,
+:root[data-theme="dark"] body .target-result {
+  color: #d5e3ef !important;
+}
+:root[data-theme="dark"] body button,
+:root[data-theme="dark"] body input,
+:root[data-theme="dark"] body select,
+:root[data-theme="dark"] body textarea {
+  color: #f7fbff !important;
+}
+:root[data-theme="dark"] body input::placeholder,
+:root[data-theme="dark"] body textarea::placeholder { color: #c5d4e2 !important; opacity: 1; }
+:root[data-theme="dark"] body .btn,
+:root[data-theme="dark"] body nav a.on,
+:root[data-theme="dark"] body .condition-explorer .enzyme-tab[aria-pressed="true"] {
+  color: #102033 !important;
+}
+:root[data-theme="dark"] body .opt.ok,
+:root[data-theme="dark"] body .match-target.matched,
+:root[data-theme="dark"] body .game-finish { color: #f1fff6 !important; }
+:root[data-theme="dark"] body .opt.no { color: #fff4ed !important; }
+:root[data-theme="dark"] body svg text { fill: #f7fbff !important; }
+:root[data-theme="dark"] body .theme-toggle { color: #f7fbff !important; }
+/* Keep the denatured-enzyme panel matched to the site theme. */
+:root[data-theme="light"] body .denature-stage,
+:root:not([data-theme="dark"]) body .denature-stage {
+  background: #ffffff !important;
+  color: var(--ink) !important;
+}
+:root[data-theme="dark"] body .denature-stage {
+  background: var(--card) !important;
+  color: var(--ink) !important;
+  border-color: var(--line) !important;
+}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="flask" viewBox="0 0 24 24"><path d="M9 3h6M10 3v6L4.5 19a1.5 1.5 0 0 0 1.3 2.2h12.4a1.5 1.5 0 0 0 1.3-2.2L14 9V3M7.5 15h9"/></symbol>
+  <symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><path d="M20.8 5.6a5 5 0 0 0-7.1 0L12 7.3l-1.7-1.7a5 5 0 0 0-7.1 7.1L12 21l8.8-8.3a5 5 0 0 0 0-7.1z"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="drop" viewBox="0 0 24 24"><path d="M12 2.5S5 10 5 15a7 7 0 0 0 14 0c0-5-7-12.500-7-12.500z"/></symbol>
+  <symbol id="grain" viewBox="0 0 24 24"><path d="M12 22V9M12 9c0-3 2-5 5-5 0 3-2 5-5 5zM12 9c0-3-2-5-5-5 0 3 2 5 5 5zM12 16c0-3 2-5 5-5 0 3-2 5-5 5zM12 16c0-3-2-5-5-5 0 3 2 5 5 5z"/></symbol>
+  <symbol id="scissors" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.100 15.900M14.500 14.500 20 20M8.100 8.100 12 12"/></symbol>
+  <symbol id="stomach" viewBox="0 0 24 24"><path d="M9 3v5c0 2-4 3-4 7a6 6 0 0 0 12 0c0-3-3-4-3-6V6a3 3 0 0 0-3-3H9z"/></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+</svg>
+
+<header>
+  <div class="theme-toggle-row">
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to night mode">🌙 Night mode</button>
+  </div>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><svg class="i"><use href="#flask"/></svg>Enzymes</a>
+    <button id="menu" aria-label="Open menu" aria-expanded="false"><svg class="i"><use href="#menu"/></svg></button>
+    <nav id="nav" aria-label="Main">
+      <ul>
+        <li><a href="#about">What are they?</a></li>
+        <li><a href="#why">Why they matter</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#deep">More enzymes</a></li>
+        <li><a href="#temperature">Temperature</a></li><li><a href="#game">Game</a></li><li><a href="#quiz">Quiz</a></li>
+        <li><a href="#summary">Summary</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="by"><svg class="i"><use href="#flask"/></svg>CHEMISTRY · LEARNING GUIDE</p>
+      <h1 class="glitch">Enzymes</h1>
+      <p class="term" aria-hidden="true">Understanding the science behind everyday life</p>
+      <p class="lead">A clear guide to how enzymes work and why they are essential for life.</p>
+      <p>By Sixten</p>
+      <div class="btns">
+        <a class="btn" href="#about">Start reading</a>
+        <a class="btn ghost" href="#examples">See the enzymes</a>
+      </div>
+    </div>
+    <svg class="art" viewBox="0 0 440 340" role="img" aria-label="An enzyme with an open active site next to its substrate">
+      <path d="M170 40a120 120 0 1 0 0 240a120 120 0 0 0 0-240zM170 160l120-60v-1z" fill="none"/>
+      <path d="M200 160 330 95A125 125 0 1 0 330 225z" fill="#ffb02e"/>
+      <circle cx="190" cy="75" r="26" fill="#fff"/><circle cx="196" cy="78" r="11" fill="#0f2a43"/>
+      <circle cx="245" cy="60" r="22" fill="#fff"/><circle cx="250" cy="64" r="9" fill="#0f2a43"/>
+      <path d="M385 140 430 118v90l-45-22z" fill="#1f78d1" transform="translate(-30 20)"/>
+      <path d="M262 160 332 128" stroke="#0f2a43" stroke-width="3" stroke-dasharray="5 6" fill="none" opacity=".0"/>
+      <text x="38" y="312" font-family="Fredoka,sans-serif" font-size="22" fill="currentColor">Enzyme + substrate</text>
+    </svg>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="two">
+      <div>
+        <h2>What is an enzyme?</h2>
+        <p class="lead">Enzymes (E) are biological catalysts that speed up the chemical reactions keeping you alive.</p>
+        <p>Without them, vital processes like digesting food and making energy would happen far too slowly for life to exist.</p>
+      </div>
+      <div>
+        <p>They turn substrates (S) into products (P) by lowering the activation energy (E<sub>a</sub>), without changing the reaction’s overall energy (ΔG).</p>
+        <p>They bond because positives (enzyme) and negatives (substrate) attract.</p>
+      </div>
+    </div>
+    <div class="steps" aria-label="Enzyme reaction path">
+      <div class="step" data-step="0"><b>E + S</b><span>Enzyme meets substrate</span></div><div class="arrow">⇌</div>
+      <div class="step" data-step="1"><b>ES</b><span>They bond</span></div><div class="arrow">→</div>
+      <div class="step" data-step="2"><b>E + P</b><span>Enzyme is free, product is made</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="viz-sec">
+  <div class="wrap">
+    <div class="card viz">
+      <h3>See how the substrate binds: E + S ⇌ ES → E + P</h3>
+      <svg id="vizsvg" data-stage="0" viewBox="0 0 600 260" role="img" aria-label="Animation of a substrate binding to the active site of an enzyme and being turned into two products">
+        <path d="M200,130 L286.6,80 A100,100 0 1 0 286.6,180 Z" fill="#ffb02e"/>
+        <text x="140" y="136" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="24" fill="#0f2a43">Enzyme</text>
+        <g class="site"><path d="M318 52 L255 112" stroke="currentColor" stroke-width="2.5" stroke-dasharray="5 5" fill="none"/><text x="322" y="46" font-family="Fredoka,sans-serif" font-size="20" fill="currentColor">Active site</text></g>
+        <g class="sub">
+          <g class="pa"><path d="M0,0 L86,-50 L86,0 Z" fill="var(--accent)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/></g>
+          <g class="pb"><path d="M0,0 L86,0 L86,50 Z" fill="var(--pop)" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/></g>
+          <text class="ts" x="43" y="-64" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="20" fill="currentColor">Substrate</text>
+        </g>
+        <text id="vlbl" x="300" y="254" text-anchor="middle" font-family="Fredoka,sans-serif" font-size="22" fill="currentColor"></text>
+      </svg>
+      <p id="vcap" class="cap" aria-live="polite"></p>
+      <div class="btns" style="margin-top:.4em">
+        <button class="btn" id="vnext" type="button"></button>
+        <button class="btn ghost" id="vreset" type="button">Reset</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="alt">
+  <div class="wrap">
+    <h2>Why enzymes are important</h2>
+    <p class="lead">Enzymes make the chemical reactions needed for life happen quickly enough and under the mild conditions inside living cells.</p>
+    <div class="grid">
+      <div class="card"><div class="ico"><svg class="i"><use href="#bolt"/></svg></div><h3>They speed up reactions</h3><p>Enzymes lower the activation energy needed for a reaction. This means reactions can happen faster without needing high temperatures.</p></div>
+      <div class="card"><div class="ico pop"><svg class="i"><use href="#grain"/></svg></div><h3>They help release energy</h3><p>Digestive enzymes break large food molecules into smaller nutrients. Cells can then use these nutrients in chemical reactions, including cellular respiration, to release energy.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#shield"/></svg></div><h3>They protect cells</h3><p>Enzymes such as catalase break down harmful substances made inside cells. Other enzymes help important processes, such as copying DNA, take place.</p></div>
+    </div>
+    <div class="card" style="margin-top:22px">
+      <h3>Why this matters</h3>
+      <p>Without enzymes, many reactions in the body would happen too slowly to keep us alive. Enzymes are specific: each active site fits certain substrates, and the enzyme can be used again after the reaction.</p>
+    </div>
+    <h3 style="margin-top:1.6em">Example: amylase in saliva</h3>
+    <p>Amylase speeds up the breakdown of starch into smaller sugars, such as maltose. This is one of the first steps in digesting carbohydrates.</p>
+    <div class="formula">Starch + water <span style="font-size:.8em">— amylase →</span> smaller sugars</div>
+  </div>
+</section>
+
+<section id="examples">
+  <div class="wrap">
+    <h2>Enzymes we learned about</h2>
+    <p class="lead">Three digestive enzymes, each with its own job.</p>
+    <div class="grid">
+      <div class="card"><div class="ico"><svg class="i"><use href="#drop"/></svg></div><h3>Lipase</h3><p>Breaks down fats into fatty acids and glycerol.</p></div>
+      <div class="card"><div class="ico pop"><svg class="i"><use href="#grain"/></svg></div><h3>Amylase</h3><p>Breaks down starch into smaller sugars.</p></div>
+      <div class="card"><div class="ico"><svg class="i"><use href="#scissors"/></svg></div><h3>Protease</h3><p>Breaks down proteins into smaller peptides and amino acids.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="deep" class="alt">
+  <div class="wrap">
+    <h2>Three enzymes in more detail</h2>
+    <p class="lead">These enzymes have different jobs in digestion and protection.</p>
+
+    <article class="feature" id="pepsin">
+      <div class="ico"><svg class="i" style="width:36px;height:36px"><use href="#stomach"/></svg></div>
+      <div>
+        <h3>Pepsin</h3>
+        <p>Pepsin is a digestive enzyme found in the stomach. It breaks large protein molecules into smaller pieces called peptides, making them easier for the body to digest further.</p>
+        <p>It works best in the acidic conditions of the stomach. Pepsin is first made in an inactive form and becomes active when stomach acid is present. A protective mucus layer containing bicarbonate helps stop the stomach lining from being damaged by the acid and pepsin.</p>
+        
+    <svg class="protein-figure" viewBox="0 0 300 175" role="img" aria-label="Simplified illustration of the folded pepsin protein">
+      <path d="M55 92 C35 66 58 36 88 44 C100 16 137 24 150 44 C175 22 209 38 205 66 C239 72 246 106 220 122 C208 150 174 146 155 128 C131 151 98 140 96 118 C70 128 46 112 55 92Z" fill="#d7d9c5" stroke="#71815c" stroke-width="4"/>
+      <path class="strand" d="M72 83 C89 56 105 66 116 86 S143 111 154 86 S184 57 202 79 M78 109 C98 91 115 104 128 121 S160 137 176 113 S203 96 222 107"
+        fill="none" stroke="#71815c" stroke-width="6" stroke-linecap="round"/>
+      <path d="M125 72 Q147 55 171 72 Q181 84 166 98 Q146 105 129 91Z" fill="#d99a62" stroke="#203b36" stroke-width="2"/>
+      <path d="M166 77 L224 45" stroke="#203b36" stroke-width="2" stroke-dasharray="4 4"/>
+      <text x="226" y="43" font-size="11" fill="#203b36" font-family="Nunito,sans-serif">Active site</text>
+      <text x="150" y="166" text-anchor="middle" font-size="11" fill="#526d66" font-family="Nunito,sans-serif">Simplified protein structure</text>
+    </svg>
+        <p class="protein-caption">The active site is the part where the substrate binds.</p>
+      </div>
+    </article>
+
+    <article class="feature" id="catalase">
+      <div class="ico pop"><svg class="i" style="width:36px;height:36px"><use href="#heart"/></svg></div>
+      <div>
+        <h3>Catalase</h3>
+        <p>Catalase is found in almost all living cells, including liver cells. Its job is to break down hydrogen peroxide (H<sub>2</sub>O<sub>2</sub>), a harmful substance that can form during reactions inside cells.</p>
+        <p>It converts hydrogen peroxide into water and oxygen. This helps protect cells from damage. Catalase works extremely quickly: one enzyme molecule can break down millions of hydrogen peroxide molecules in a second.</p>
+        <div class="formula" style="margin-top:.6em">2H<sub>2</sub>O<sub>2</sub> → 2H<sub>2</sub>O + O<sub>2</sub></div>
+        
+    <svg class="protein-figure" viewBox="0 0 300 175" role="img" aria-label="Simplified illustration of the folded catalase protein">
+      <path d="M54 89 C39 61 67 34 94 46 C108 18 140 26 151 45 C178 24 210 40 208 68 C240 78 241 108 218 123 C203 148 172 145 154 128 C130 151 96 140 94 117 C69 126 45 111 54 89Z" fill="#c8ddcf" stroke="#477d70" stroke-width="4"/>
+      <path class="strand" d="M72 83 C89 56 105 66 116 86 S143 111 154 86 S184 57 202 79 M78 109 C98 91 115 104 128 121 S160 137 176 113 S203 96 222 107"
+        fill="none" stroke="#477d70" stroke-width="6" stroke-linecap="round"/>
+      <path d="M125 72 Q147 55 171 72 Q181 84 166 98 Q146 105 129 91Z" fill="#d99a62" stroke="#203b36" stroke-width="2"/>
+      <path d="M166 77 L224 45" stroke="#203b36" stroke-width="2" stroke-dasharray="4 4"/>
+      <text x="226" y="43" font-size="11" fill="#203b36" font-family="Nunito,sans-serif">Active site</text>
+      <text x="150" y="166" text-anchor="middle" font-size="11" fill="#526d66" font-family="Nunito,sans-serif">Simplified protein structure</text>
+    </svg>
+        <p class="protein-caption">The folded shape creates a specific active site.</p>
+      </div>
+    </article>
+
+    <article class="feature" id="lysozyme">
+      <div class="ico"><svg class="i" style="width:36px;height:36px"><use href="#shield"/></svg></div>
+      <div>
+        <h3>Lysozyme</h3>
+        <p>Lysozyme is an enzyme that helps protect the body against bacteria. It is found in fluids such as tears and saliva, which are part of the body's first line of defence.</p>
+        <p>It attacks a material in bacterial cell walls called peptidoglycan. By breaking bonds in this material, lysozyme weakens the cell wall. This makes it harder for the bacteria to survive, helping the body prevent infections.</p>
+        
+    <svg class="protein-figure" viewBox="0 0 300 175" role="img" aria-label="Simplified illustration of the folded lysozyme protein">
+      <path d="M58 91 C38 67 57 39 86 45 C97 19 129 21 145 42 C167 24 198 34 204 60 C237 68 247 100 224 120 C215 148 181 150 160 130 C139 151 106 141 99 120 C72 127 48 112 58 91Z" fill="#cbd9e8" stroke="#557b9b" stroke-width="4"/>
+      <path class="strand" d="M72 83 C89 56 105 66 116 86 S143 111 154 86 S184 57 202 79 M78 109 C98 91 115 104 128 121 S160 137 176 113 S203 96 222 107"
+        fill="none" stroke="#557b9b" stroke-width="6" stroke-linecap="round"/>
+      <path d="M125 72 Q147 55 171 72 Q181 84 166 98 Q146 105 129 91Z" fill="#d99a62" stroke="#203b36" stroke-width="2"/>
+      <path d="M166 77 L224 45" stroke="#203b36" stroke-width="2" stroke-dasharray="4 4"/>
+      <text x="226" y="43" font-size="11" fill="#203b36" font-family="Nunito,sans-serif">Active site</text>
+      <text x="150" y="166" text-anchor="middle" font-size="11" fill="#526d66" font-family="Nunito,sans-serif">Simplified protein structure</text>
+    </svg>
+        <p class="protein-caption">Lysozyme's active site binds to parts of the bacterial cell wall.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+
+<section id="temperature">
+  <div class="wrap">
+    <h2>Temperature and enzyme activity</h2>
+    <p class="lead">Drag the slider, press a button, or click the graph to change the temperature. Most human enzymes work best at about 37°C.</p>
+    <div class="temp-panel">
+      <div class="temp-control">
+        <label for="tempSlider"><strong>Temperature</strong></label>
+        <div class="temp-reading"><span id="tempValue">37</span>°C</div>
+        <input id="tempSlider" type="range" min="0" max="100" value="37" step="1" aria-describedby="tempExplanation">
+        <div class="temp-presets">
+          <button class="btn ghost" type="button" data-t="0">Freezing 0°C</button>
+          <button class="btn ghost" type="button" data-t="37">Body 37°C</button>
+          <button class="btn ghost" type="button" data-t="70">Too hot 70°C</button>
+          <button class="btn" type="button" id="tempSweep">▶ Heat it up</button>
+        </div>
+        <div class="activity-track" id="activityBar" role="progressbar" aria-label="Relative enzyme activity" aria-valuemin="0" aria-valuemax="100"><div class="activity-fill" id="activityFill"></div></div>
+        <strong id="activityLabel"></strong> <span id="activityPct" class="temp-note"></span>
+        <p class="temp-note" id="tempExplanation" aria-live="polite"></p>
+      </div>
+      <div class="denature-stage" id="denatureStage">
+        <svg class="protein-shape" viewBox="0 0 190 110" role="img" aria-label="Enzyme that changes shape as the temperature changes">
+          <path id="enzBack" fill="none" stroke="#356b5d" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="enzSite" fill="none" stroke="#c58b58" stroke-width="8" stroke-linecap="round"/>
+          <circle id="enzSub" r="8" fill="#1d332e" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <strong id="shapeLabel"></strong>
+        <p class="temp-note" id="shapeText"></p>
+      </div>
+    </div>
+    <div class="card chart-card">
+      <h3>Enzyme activity against temperature</h3>
+      <svg id="tempChart" viewBox="0 0 640 330" role="img" aria-label="Graph of enzyme activity against temperature. Activity roughly doubles for every 10 degrees until the peak at 37 degrees Celsius, then falls steeply to almost zero by about 60 degrees as the enzyme denatures.">
+        <rect x="60" y="20" width="165" height="240" fill="#4f8fd1" opacity=".10"/>
+        <rect x="225" y="20" width="82.5" height="240" fill="#4b8a69" opacity=".18"/>
+        <rect x="307.5" y="20" width="302.5" height="240" fill="#d0583f" opacity=".10"/>
+        <g stroke="var(--line)" stroke-width="1"><path d="M60 80H610M60 140H610M60 200H610"/></g>
+        <path d="M60 20V260H610" fill="none" stroke="currentColor" stroke-width="2"/>
+        <g text-anchor="middle"><text x="60" y="280">0</text><text x="170" y="280">20</text><text x="280" y="280">40</text><text x="390" y="280">60</text><text x="500" y="280">80</text><text x="610" y="280">100</text></g>
+        <g text-anchor="end"><text x="52" y="264">0</text><text x="52" y="204">25</text><text x="52" y="144">50</text><text x="52" y="84">75</text><text x="52" y="24">100</text></g>
+        <text x="335" y="312" text-anchor="middle" font-weight="700">Temperature (°C)</text>
+        <text transform="translate(16 140) rotate(-90)" text-anchor="middle" font-weight="700">Relative activity (%)</text>
+        <g font-weight="700" text-anchor="middle"><text x="142" y="250">Too cold</text><text x="266" y="250">Optimum</text><text x="459" y="250">Too hot: denatured</text></g>
+        <path id="cArea" fill="#356b5d" opacity=".16"/>
+        <path id="cCurve" fill="none" stroke="#356b5d" stroke-width="4" stroke-linejoin="round"/>
+        <line id="cCursor" y1="20" y2="260" stroke="#c58b58" stroke-width="2" stroke-dasharray="5 4"/>
+        <circle id="cDot" r="7" fill="#c58b58" stroke="#fff" stroke-width="2.5"/>
+        <text id="cRead" font-weight="800"></text>
+      </svg>
+      <p class="temp-note" style="margin:8px 0 0">Below the optimum, activity roughly doubles for every 10°C because particles collide more often. Above it, heat breaks the weak bonds that hold the enzyme’s shape, so the active site is lost. The curve shows a typical human enzyme; other enzymes have different optimum temperatures.</p>
+    </div>
+    <div class="grid">
+      <div class="card"><h3>Too cold</h3><p>Particles move slowly, so enzyme and substrate rarely collide. The enzyme keeps its shape and speeds up again when warmed.</p></div>
+      <div class="card"><h3>Optimum</h3><p>Collisions are frequent and the active site has exactly the right shape, so the reaction is as fast as it can be.</p></div>
+      <div class="card"><h3>Too hot</h3><p>The enzyme denatures: its shape changes, the substrate no longer fits the active site, and the damage is permanent.</p></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="enzyme-conditions" class="alt">
+  <div class="wrap">
+    <h2>Explore how pH and temperature affect each enzyme</h2>
+    <p class="lead">Choose an enzyme, then move the pH and temperature sliders. The activity estimate is a simplified model, not an exact laboratory measurement. Each enzyme has a pH range where it works best.</p>
+    <div class="condition-explorer" id="conditionExplorer">
+      <h3>Choose an enzyme</h3>
+      <div class="enzyme-tabs" role="group" aria-label="Choose an enzyme">
+        <button class="enzyme-tab" type="button" data-enzyme="pepsin" aria-pressed="true">Pepsin</button>
+        <button class="enzyme-tab" type="button" data-enzyme="catalase" aria-pressed="false">Catalase</button>
+        <button class="enzyme-tab" type="button" data-enzyme="lysozyme" aria-pressed="false">Lysozyme</button>
+      </div>
+      <div class="condition-grid">
+        <div class="condition-control">
+          <label for="conditionPH">pH <span class="condition-value" id="conditionPHValue">2.0</span></label>
+          <input id="conditionPH" type="range" min="0" max="14" value="2" step="0.5">
+          <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem"><span>Acidic (0)</span><span>Neutral (7)</span><span>Alkaline (14)</span></div>
+          <p class="condition-note" id="conditionPHText">Pepsin works best at about pH 2. At neutral or alkaline pH, such as pH 7–10, it has almost no activity.</p>
+        </div>
+        <div class="condition-control">
+          <label for="conditionTemp">Temperature <span class="condition-value" id="conditionTempValue">37°C</span></label>
+          <input id="conditionTemp" type="range" min="0" max="80" value="37" step="1">
+          <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:.85rem"><span>0°C</span><span>Body temperature</span><span>80°C</span></div>
+          <p class="condition-note" id="conditionTempText">At around body temperature, this human enzyme can work efficiently.</p>
+        </div>
+        <div class="condition-result">
+          <h3 id="conditionEnzymeName">Pepsin activity</h3>
+          <div class="condition-meter" role="progressbar" aria-label="Estimated relative enzyme activity" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100" id="conditionMeter"><span id="conditionMeterFill"></span></div>
+          <div class="condition-status" id="conditionStatus" aria-live="polite">High activity</div>
+          <p id="conditionExplanation">These conditions are close to the enzyme's usual optimum, so the active site can bind its substrate effectively.</p>
+        </div>
+        <div class="condition-result">
+          <h3>Usual optimum conditions</h3>
+          <div class="condition-facts">
+            <div class="condition-fact"><small>Optimum pH</small><strong id="conditionOptPH">About 2</strong></div>
+            <div class="condition-fact"><small>Optimum temperature</small><strong>About 37°C</strong></div>
+          </div>
+          <p class="condition-note" id="conditionWhere">Where it works: the stomach, where hydrochloric acid creates a very acidic environment.</p>
+        </div>
+      </div>
+
+      <div class="condition-result" style="margin-top:18px;max-width:480px;margin-left:auto;margin-right:auto">
+        <h3>Temperature vs. enzyme activity</h3>
+        <p class="condition-note">This graph updates when you move the temperature slider. It shows how temperature affects the selected enzyme at the chosen pH.</p>
+        <svg id="temperatureActivityGraph" viewBox="0 0 320 155" role="img" aria-label="Graph showing estimated enzyme activity at different temperatures" style="display:block;width:100%;max-width:360px;height:auto;margin:10px auto 0">
+          <line x1="30" y1="10" x2="30" y2="122" stroke="currentColor" opacity=".65" />
+          <line x1="30" y1="122" x2="305" y2="122" stroke="currentColor" opacity=".65" />
+          <line x1="30" y1="66" x2="305" y2="66" stroke="currentColor" opacity=".16" stroke-dasharray="4 4"/>
+          <text x="24" y="14" text-anchor="end" font-size="9" fill="currentColor">100%</text>
+          <text x="24" y="125" text-anchor="end" font-size="9" fill="currentColor">0%</text>
+          <text x="30" y="140" text-anchor="middle" font-size="9" fill="currentColor">0°C</text>
+          <text x="168" y="140" text-anchor="middle" font-size="9" fill="currentColor">40°C</text>
+          <text x="305" y="140" text-anchor="middle" font-size="9" fill="currentColor">80°C</text>
+          <text x="168" y="153" text-anchor="middle" font-size="9" fill="currentColor">Temperature</text>
+          <polyline id="temperatureActivityCurve" points="" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <line id="temperatureActivityGuide" x1="157" y1="10" x2="157" y2="122" stroke="currentColor" stroke-dasharray="3 4" opacity=".55"/>
+          <circle id="temperatureActivityDot" cx="157" cy="66" r="5.5" fill="var(--accent)" stroke="var(--card)" stroke-width="2"/>
+        </svg>
+        <p class="condition-note" id="temperatureGraphCaption" style="text-align:center;font-weight:800">At 37°C: estimated activity is high.</p>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<section id="game" class="alt">
+  <div class="wrap">
+    <h2>Enzyme matching game</h2>
+    <p class="lead">Drag each enzyme to the job it performs. On a touchscreen, tap an enzyme and then tap its matching job.</p>
+    <div class="card game-card" id="enzyme-game" aria-live="polite">
+      <div class="game-topline">
+        <p class="qhead" id="game-progress">0 of 6 matches</p>
+        <p class="game-score" id="game-score">Mistakes: 0</p>
+      </div>
+      <div class="game-status" id="game-feedback" role="status">Choose an enzyme to begin.</div>
+      <div class="match-layout">
+        <div class="match-column">
+          <h3>Enzymes</h3>
+          <div class="enzyme-pieces" id="enzyme-pieces">
+            <button class="enzyme-piece" type="button" draggable="true" data-enzyme="lipase">Lipase</button>
+            <button class="enzyme-piece" type="button" draggable="true" data-enzyme="amylase">Amylase</button>
+            <button class="enzyme-piece" type="button" draggable="true" data-enzyme="protease">Protease</button>
+            <button class="enzyme-piece" type="button" draggable="true" data-enzyme="pepsin">Pepsin</button>
+            <button class="enzyme-piece" type="button" draggable="true" data-enzyme="catalase">Catalase</button>
+            <button class="enzyme-piece" type="button" draggable="true" data-enzyme="lysozyme">Lysozyme</button>
+          </div>
+        </div>
+        <div class="match-column">
+          <h3>What does it do?</h3>
+          <div class="match-targets" id="match-targets">
+            <button class="match-target" type="button" data-answer="amylase"><span class="target-copy">Breaks starch into smaller sugars</span><span class="target-result">Drop enzyme here</span></button>
+            <button class="match-target" type="button" data-answer="catalase"><span class="target-copy">Breaks hydrogen peroxide into water and oxygen</span><span class="target-result">Drop enzyme here</span></button>
+            <button class="match-target" type="button" data-answer="lipase"><span class="target-copy">Breaks fats into fatty acids and glycerol</span><span class="target-result">Drop enzyme here</span></button>
+            <button class="match-target" type="button" data-answer="lysozyme"><span class="target-copy">Weakens bacterial cell walls</span><span class="target-result">Drop enzyme here</span></button>
+            <button class="match-target" type="button" data-answer="pepsin"><span class="target-copy">Starts breaking proteins into peptides in the stomach</span><span class="target-result">Drop enzyme here</span></button>
+            <button class="match-target" type="button" data-answer="protease"><span class="target-copy">Breaks proteins into smaller peptides and amino acids</span><span class="target-result">Drop enzyme here</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="game-actions">
+        <button class="btn" id="game-restart" type="button">Shuffle and play again</button>
+      </div>
+      <p class="game-finish" id="game-finish" hidden></p>
+    </div>
+  </div>
+</section>
+
+<section id="quiz">
+  <div class="wrap">
+    <h2>Test yourself</h2>
+    <p class="lead">Five questions about the enzymes. Check what you remember.</p>
+    <div class="card" id="qz" aria-live="polite"></div>
+  </div>
+</section>
+
+
+
+
+
+<section id="summary" class="alt">
+  <div class="wrap">
+    <h2>Summary</h2>
+    <p class="lead">Remember the main job of each enzyme.</p>
+    <div class="grid take">
+      <div class="card"><h3>Lipase, amylase and protease</h3><p>These enzymes help digest fats, starch and proteins.</p></div>
+      <div class="card"><h3>Pepsin</h3><p>Works in the stomach and starts breaking proteins into smaller peptides.</p></div>
+      <div class="card"><h3>Catalase and lysozyme</h3><p>Catalase breaks down hydrogen peroxide. Lysozyme helps defend against bacteria.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Thanks for listening 🚀</h2>
+    <p>Sixten</p>
+    <a class="btn" href="#top">Back to top</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  var toggle=document.getElementById('themeToggle');
+  function currentTheme(){
+    return root.getAttribute('data-theme') || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  }
+  function updateButton(){
+    var dark=currentTheme()==='dark';
+    toggle.textContent=dark?'☀️ Day mode':'🌙 Night mode';
+    toggle.setAttribute('aria-label',dark?'Switch to day mode':'Switch to night mode');
+    toggle.setAttribute('aria-pressed',String(dark));
+  }
+  try {
+    var saved=localStorage.getItem('enzyme-site-theme');
+    if(saved==='dark'||saved==='light') root.setAttribute('data-theme',saved);
+  } catch(e) {}
+  updateButton();
+  toggle.addEventListener('click',function(){
+    var next=currentTheme()==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try { localStorage.setItem('enzyme-site-theme',next); } catch(e) {}
+    updateButton();
+  });
+})();
+</script>
+<script>
+(function(){
+  var nav=document.getElementById('nav'), btn=document.getElementById('menu');
+  btn.addEventListener('click',function(){
+    var o=nav.classList.toggle('open'); btn.setAttribute('aria-expanded',o);
+  });
+  var links=[].slice.call(nav.querySelectorAll('a'));
+  links.forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false')})});
+  var map={};
+  links.forEach(function(a){map[a.getAttribute('href').slice(1)]=a});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){links.forEach(function(l){l.classList.remove('on')});var a=map[e.target.id];if(a)a.classList.add('on')}
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    Object.keys(map).forEach(function(id){var s=document.getElementById(id);if(s)io.observe(s)});
+  }
+})();
+</script>
+<script>
+(function(){
+  var svg=document.getElementById('vizsvg'),btn=document.getElementById('vnext'),rst=document.getElementById('vreset'),cap=document.getElementById('vcap'),lbl=document.getElementById('vlbl');
+  var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
+  var T=[
+   {b:'Bind the substrate',l:'E + S: enzyme and substrate',c:'The substrate (S) and the enzyme (E) are separate. The substrate fits the enzyme’s active site like a key in a lock.'},
+   {b:'Run the reaction',l:'ES: enzyme–substrate complex',c:'The substrate binds to the active site and forms the enzyme–substrate complex (ES).'},
+   {b:'Start over',l:'E + P: enzyme and products',c:'The substrate is turned into products (P). The enzyme is unchanged and ready to work again.'}
+  ];
+  var s=0;
+  function set(n){
+    s=n; svg.setAttribute('data-stage',n);
+    btn.textContent=T[n].b; lbl.textContent=T[n].l; cap.textContent=T[n].c;
+    rst.disabled=(n===0);
+    steps.forEach(function(el){el.classList.toggle('on',+el.getAttribute('data-step')===n)});
+  }
+  btn.addEventListener('click',function(){set((s+1)%3)});
+  rst.addEventListener('click',function(){set(0)});
+  set(0);
+})();
+
+(function(){
+  var Q=[
+   {q:'Which enzyme breaks down hydrogen peroxide into water and oxygen?',o:['Catalase','Pepsin','Lysozyme','Amylase'],a:0,e:'Catalase converts hydrogen peroxide into water and oxygen.'},
+   {q:'Where does pepsin work?',o:['In the stomach','In tears','In the mouth','In liver cells'],a:0,e:'Pepsin is a digestive enzyme that works in the acidic environment of the stomach.'},
+   {q:'What part of bacteria does lysozyme attack?',o:['The cell wall','The nucleus','The mitochondria','The cell membrane of human cells'],a:0,e:'Lysozyme breaks bonds in peptidoglycan, a material in bacterial cell walls.'},
+   {q:'Which enzyme breaks down starch?',o:['Amylase','Lipase','Protease','Catalase'],a:0,e:'Amylase breaks starch into smaller sugars.'},
+   {q:'Why is catalase important for cells?',o:['It breaks down harmful hydrogen peroxide','It makes proteins in the stomach','It breaks down fats in food','It builds bacterial cell walls'],a:0,e:'Hydrogen peroxide can harm cells, and catalase converts it into water and oxygen.'}
+  ];
+  var box=document.getElementById('qz'),i=0,score=0;
+  function ask(){
+    box.innerHTML='';
+    var q=Q[i];
+    var h=document.createElement('p');h.className='qhead';h.textContent='Question '+(i+1)+' of '+Q.length;box.appendChild(h);
+    var t=document.createElement('h3');t.textContent=q.q;box.appendChild(t);
+    var fb=document.createElement('p');fb.className='fb';
+    var nx=document.createElement('button');nx.className='btn';nx.type='button';nx.hidden=true;
+    nx.textContent=(i===Q.length-1)?'See my score':'Next question';
+    nx.onclick=function(){i++;if(i<Q.length)ask();else done()};
+    var buttons=[];
+    q.o.forEach(function(txt,k){
+      var b=document.createElement('button');b.type='button';b.className='opt';b.textContent=txt;
+      b.onclick=function(){
+        buttons.forEach(function(x,j){x.disabled=true;if(j===q.a)x.classList.add('ok')});
+        if(k===q.a){score++;fb.textContent='Correct! '+q.e}
+        else{b.classList.add('no');fb.textContent='Not quite. '+q.e}
+        nx.hidden=false;nx.focus();
+      };
+      buttons.push(b);box.appendChild(b);
+    });
+    box.appendChild(fb);
+    var w=document.createElement('div');w.className='btns';w.appendChild(nx);box.appendChild(w);
+  }
+  function done(){
+    box.innerHTML='';
+    var p=document.createElement('p');p.className='score';p.textContent=score+' / '+Q.length;box.appendChild(p);
+    var m=document.createElement('p');m.className='lead';
+    m.textContent=score===Q.length?'Excellent! You know these enzymes well.':(score>=3?'Good work! Review the enzyme cards to improve your score.':'Read the enzyme sections again and give it another try.');
+    box.appendChild(m);
+    var r=document.createElement('button');r.className='btn';r.type='button';r.textContent='Try again';
+    r.onclick=function(){i=0;score=0;ask()};
+    var w=document.createElement('div');w.className='btns';w.appendChild(r);box.appendChild(w);
+  }
+  ask();
+})();
+</script>
+
+
+<script>
+(function(){
+  var game = document.getElementById('enzyme-game');
+  if (!game) return;
+  var piecesBox = document.getElementById('enzyme-pieces');
+  var targets = Array.prototype.slice.call(game.querySelectorAll('.match-target'));
+  var pieces = Array.prototype.slice.call(game.querySelectorAll('.enzyme-piece'));
+  var progress = document.getElementById('game-progress');
+  var score = document.getElementById('game-score');
+  var feedback = document.getElementById('game-feedback');
+  var finish = document.getElementById('game-finish');
+  var restart = document.getElementById('game-restart');
+  var selected = null, matched = 0, mistakes = 0;
+
+  function shufflePieces(){
+    for (var i = pieces.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var temp = pieces[i]; pieces[i] = pieces[j]; pieces[j] = temp;
+    }
+    pieces.forEach(function(piece){ piecesBox.appendChild(piece); });
+  }
+  function updateStats(){
+    progress.textContent = matched + ' of ' + targets.length + ' matches';
+    score.textContent = 'Mistakes: ' + mistakes;
+  }
+  function clearSelection(){
+    selected = null;
+    pieces.forEach(function(piece){ piece.classList.remove('selected'); });
+  }
+  function place(enzyme, target){
+    if (!enzyme || target.classList.contains('matched') || enzyme.classList.contains('used')) return;
+    if (target.getAttribute('data-answer') === enzyme.getAttribute('data-enzyme')) {
+      target.classList.add('matched');
+      target.querySelector('.target-result').textContent = enzyme.textContent + ' ✓';
+      enzyme.classList.add('used');
+      enzyme.setAttribute('aria-disabled','true');
+      enzyme.draggable = false;
+      matched++;
+      feedback.textContent = 'Correct match! ' + enzyme.textContent + ' has the right job.';
+      clearSelection();
+      updateStats();
+      if (matched === targets.length) {
+        finish.hidden = false;
+        finish.textContent = 'All six matches completed! You made ' + mistakes + ' mistake' + (mistakes === 1 ? '' : 's') + '. Great work.';
+        feedback.textContent = 'Game complete!';
+      }
+    } else {
+      mistakes++;
+      updateStats();
+      feedback.textContent = 'Not a match yet. Try another job for ' + enzyme.textContent + '.';
+      target.classList.remove('drag-over');
+    }
+  }
+  pieces.forEach(function(piece){
+    piece.addEventListener('dragstart', function(event){
+      if (piece.classList.contains('used')) { event.preventDefault(); return; }
+      event.dataTransfer.setData('text/plain', piece.getAttribute('data-enzyme'));
+      event.dataTransfer.effectAllowed = 'move';
+      selected = piece;
+    });
+    piece.addEventListener('dragend', function(){
+      targets.forEach(function(target){ target.classList.remove('drag-over'); });
+    });
+    piece.addEventListener('click', function(){
+      if (piece.classList.contains('used')) return;
+      if (selected === piece) { clearSelection(); feedback.textContent = 'Selection cleared.'; return; }
+      clearSelection(); selected = piece; piece.classList.add('selected');
+      feedback.textContent = 'Now tap the job that matches ' + piece.textContent + '.';
+    });
+  });
+  targets.forEach(function(target){
+    target.addEventListener('dragover', function(event){
+      if (target.classList.contains('matched')) return;
+      event.preventDefault(); target.classList.add('drag-over');
+    });
+    target.addEventListener('dragleave', function(){ target.classList.remove('drag-over'); });
+    target.addEventListener('drop', function(event){
+      event.preventDefault(); target.classList.remove('drag-over');
+      var key = event.dataTransfer.getData('text/plain');
+      var dragged = pieces.find(function(piece){ return piece.getAttribute('data-enzyme') === key; });
+      place(dragged || selected, target);
+    });
+    target.addEventListener('click', function(){
+      if (selected) place(selected, target);
+      else if (!target.classList.contains('matched')) feedback.textContent = 'Tap an enzyme first, then tap this job.';
+    });
+  });
+  restart.addEventListener('click', function(){
+    matched = 0; mistakes = 0; clearSelection(); finish.hidden = true; finish.textContent = '';
+    pieces.forEach(function(piece){ piece.classList.remove('used'); piece.removeAttribute('aria-disabled'); piece.draggable = true; });
+    targets.forEach(function(target){
+      target.classList.remove('matched','drag-over');
+      target.querySelector('.target-result').textContent = 'Drop enzyme here';
+    });
+    shufflePieces(); updateStats(); feedback.textContent = 'New round! Match all six enzymes to their jobs.';
+  });
+  shufflePieces(); updateStats();
+})();
+</script>
+
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var slider=$('tempSlider'); if(!slider)return;
+  var val=$('tempValue'),fill=$('activityFill'),bar=$('activityBar'),label=$('activityLabel'),pct=$('activityPct'),explain=$('tempExplanation'),stage=$('denatureStage'),sLabel=$('shapeLabel'),sText=$('shapeText'),back=$('enzBack'),site=$('enzSite'),sub=$('enzSub'),chart=$('tempChart'),curve=$('cCurve'),area=$('cArea'),cur=$('cCursor'),dot=$('cDot'),read=$('cRead'),sweep=$('tempSweep');
+  var TM=50,W=3,X0=60,XS=5.5,Y0=260,YS=2.4;
+  function nat(t){return 1/(1+Math.exp((t-TM)/W))}
+  function act(t){var a=t<=37?Math.pow(2,(t-37)/10):nat(t)/nat(37);return Math.max(0,Math.min(1,a))*100}
+  function cx(t){return X0+t*XS}
+  function cy(a){return Y0-a*YS}
+  var d='';for(var i=0;i<=100;i++){d+=(i?'L':'M')+cx(i).toFixed(1)+' '+cy(act(i)).toFixed(1)}
+  curve.setAttribute('d',d);
+  area.setAttribute('d',d+'L'+cx(100)+' '+Y0+'L'+cx(0)+' '+Y0+'Z');
+  var BF=[8,56,15,18,42,14,55,43,68,73,83,82,99,48,114,17,137,22,143,49,150,78,171,83,184,48];
+  var BU=[6,34,28,2,38,96,62,70,86,40,98,104,126,64,148,34,160,98,186,78];
+  BU=[6,34,28,2,38,96,62,70,86,40,98,104,126,64,148,34,160,98,186,78,170,100,176,90,186,94];
+  var SF=[76,46,95,70,114,46],SU=[68,62,95,46,122,62];
+  function lerp(a,b,m){return a.map(function(v,k){return v+(b[k]-v)*m})}
+  function pc(a){var p='M'+a[0].toFixed(1)+' '+a[1].toFixed(1);for(var k=2;k<a.length;k+=6){p+=' C'+a.slice(k,k+6).map(function(v){return v.toFixed(1)}).join(' ')}return p}
+  function pq(a){return 'M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+' Q'+a.slice(2).map(function(v){return v.toFixed(1)}).join(' ')}
+  function mix(a,b,m){return 'rgb('+a.map(function(v,k){return Math.round(v+(b[k]-v)*m)}).join(',')+')'}
+  var GREEN=[53,107,93],RED=[181,55,55],WHITE=[255,255,255],COLD=[222,236,251],HOT=[255,190,190];
+  function update(){
+    var t=+slider.value,a=act(t),m=Math.max(0,Math.min(1,(1-nat(t)-.02)/.96));
+    var L,E;
+    if(t<15){L='Very low activity (too cold)';E='Particles move slowly, so enzyme and substrate rarely collide. The enzyme keeps its shape and speeds up again when it warms.'}
+    else if(t<32){L='Activity rising';E='Warmer particles move faster, so there are more collisions between enzyme and substrate and more successful reactions.'}
+    else if(t<=42){L='Maximum activity (optimum)';E='Near the optimum temperature, collisions are frequent and the active site has exactly the right shape.'}
+    else if(t<=50){L='Activity falling';E='Heat starts to break the weak bonds holding the enzyme in shape. The active site begins to change, so fewer substrates fit.'}
+    else if(t<=60){L='Mostly denatured';E='Most enzyme molecules have lost their shape. The substrate rarely fits, so the reaction almost stops.'}
+    else{L='Fully denatured: no activity';E='The active site is destroyed. Denaturation is permanent, so cooling the enzyme down will not bring it back.'}
+    val.textContent=t;
+    slider.setAttribute('aria-valuetext',t+' degrees Celsius');
+    label.textContent=L;pct.textContent='('+Math.round(a)+'% of maximum)';explain.textContent=E;
+    fill.style.width=a+'%';fill.style.background=mix(GREEN,RED,m);
+    bar.setAttribute('aria-valuenow',Math.round(a));
+    back.setAttribute('d',pc(lerp(BF,BU,m)));
+    site.setAttribute('d',pq(lerp(SF,SU,m)));
+    back.setAttribute('stroke',mix(GREEN,RED,m));
+    sub.setAttribute('cx',95+65*m);sub.setAttribute('cy',50-32*m);
+    stage.style.background=t<37?mix(WHITE,COLD,(37-t)/37):mix(WHITE,HOT,(t-37)/63);
+    if(m>.7){sLabel.textContent='Denatured enzyme';sText.textContent='The active site has lost its shape. The substrate cannot bind.'}
+    else if(m>.12){sLabel.textContent='Starting to denature';sText.textContent='The shape is changing, so the substrate fits less well.'}
+    else if(t<15){sLabel.textContent='Normal shape, but slow';sText.textContent='The substrate fits, but collisions are rare because it is cold.'}
+    else{sLabel.textContent='Normal enzyme shape';sText.textContent='The substrate fits into the active site.'}
+    var x=cx(t),y=cy(a);
+    cur.setAttribute('x1',x);cur.setAttribute('x2',x);
+    dot.setAttribute('cx',x);dot.setAttribute('cy',y);
+    read.textContent=t+'°C · '+Math.round(a)+'%';
+    read.setAttribute('x',x>480?x-12:x+12);read.setAttribute('text-anchor',x>480?'end':'start');
+    read.setAttribute('y',Math.max(16,y-12));
+  }
+  var timer=null;
+  function stop(){if(timer){clearInterval(timer);timer=null;sweep.textContent='▶ Heat it up'}}
+  function setT(t){slider.value=Math.max(0,Math.min(100,t));update()}
+  slider.addEventListener('input',function(){stop();update()});
+  [].forEach.call(document.querySelectorAll('.temp-presets [data-t]'),function(b){b.addEventListener('click',function(){stop();setT(+b.getAttribute('data-t'))})});
+  sweep.addEventListener('click',function(){
+    if(timer){stop();return}
+    if(+slider.value>=100)setT(0);
+    sweep.textContent='❚❚ Pause';
+    timer=setInterval(function(){var t=+slider.value+1;setT(t);if(t>=100)stop()},90);
+  });
+  var drag=false;
+  function fromEvent(e){var r=chart.getBoundingClientRect();stop();setT(Math.round(((e.clientX-r.left)/r.width*640-X0)/XS))}
+  chart.addEventListener('pointerdown',function(e){drag=true;try{chart.setPointerCapture(e.pointerId)}catch(x){}fromEvent(e)});
+  chart.addEventListener('pointermove',function(e){if(drag)fromEvent(e)});
+  chart.addEventListener('pointerup',function(){drag=false});
+  chart.addEventListener('pointercancel',function(){drag=false});
+  update();
+})();
+</script>
+
+<script>
+(function(){
+  const root = document.getElementById('conditionExplorer');
+  if (!root) return;
+
+  const enzymes = {
+    pepsin: {
+      name: 'Pepsin',
+      ph: 2,
+      phLabel: 'About 2',
+      where: 'Where it works: the stomach, where hydrochloric acid creates a very acidic environment.',
+      phText: 'Pepsin works best in the strongly acidic environment of the stomach.'
+    },
+    catalase: {
+      name: 'Catalase',
+      ph: 7,
+      phLabel: 'About 7 (neutral)',
+      where: 'Where it works: in many cells, where it helps break down hydrogen peroxide into water and oxygen.',
+      phText: 'Catalase usually works best around neutral pH in human cells.'
+    },
+    lysozyme: {
+      name: 'Lysozyme',
+      ph: 6.5,
+      phLabel: 'Around 6–7',
+      where: 'Where it works: in body fluids such as tears and saliva, where it helps protect against bacteria.',
+      phText: 'Lysozyme generally works well around slightly acidic to neutral pH; its exact optimum can vary.'
+    }
+  };
+
+  const ph = root.querySelector('#conditionPH');
+  const temp = root.querySelector('#conditionTemp');
+  const phValue = root.querySelector('#conditionPHValue');
+  const tempValue = root.querySelector('#conditionTempValue');
+  const meter = root.querySelector('#conditionMeter');
+  const fill = root.querySelector('#conditionMeterFill');
+  const status = root.querySelector('#conditionStatus');
+  const explanation = root.querySelector('#conditionExplanation');
+  const phText = root.querySelector('#conditionPHText');
+  const tempText = root.querySelector('#conditionTempText');
+  const enzymeName = root.querySelector('#conditionEnzymeName');
+  const optPH = root.querySelector('#conditionOptPH');
+  const where = root.querySelector('#conditionWhere');
+  const graphCurve = root.querySelector('#temperatureActivityCurve');
+  const graphDot = root.querySelector('#temperatureActivityDot');
+  const graphGuide = root.querySelector('#temperatureActivityGuide');
+  const graphCaption = root.querySelector('#temperatureGraphCaption');
+  let selected = 'pepsin';
+
+  function clamp(n, min, max){ return Math.max(min, Math.min(max, n)); }
+
+  function update(){
+    const enzyme = enzymes[selected];
+    const p = Number(ph.value);
+    const t = Number(temp.value);
+    phValue.textContent = p.toFixed(1);
+    tempValue.textContent = t + '°C';
+    enzymeName.textContent = enzyme.name + ' activity';
+    optPH.textContent = enzyme.phLabel;
+    where.textContent = enzyme.where;
+    phText.textContent = enzyme.phText;
+
+    // Simplified pH model: activity falls as pH moves away from the enzyme's optimum.
+    const phDistance = Math.abs(p - enzyme.ph);
+    let phActivity = Math.exp(-0.5 * Math.pow(phDistance / 1.6, 2));
+    // For pepsin, neutral and alkaline pH are far outside its strongly acidic working range.
+    // Treat the tiny tail of the model curve as zero rather than suggesting meaningful activity.
+    if (selected === 'pepsin' && p >= 7) phActivity = 0;
+    const phUnsuitable = phActivity < 0.2;
+
+    // Activity rises toward body temperature, then falls sharply as heat denatures the enzyme.
+    let tempActivity;
+    if (t <= 37) {
+      tempActivity = 0.25 + 0.75 * (t / 37);
+      tempText.textContent = t < 37
+        ? 'In the cold, the enzyme and substrate move more slowly, so they meet less often. The enzyme usually keeps its shape.'
+        : 'Around body temperature, this human enzyme can work efficiently.';
+    } else {
+      tempActivity = Math.exp(-Math.pow((t - 37) / 13, 2) * 1.7);
+      tempText.textContent = t <= 45
+        ? 'As temperature rises above the usual optimum, activity begins to fall.'
+        : 'If it gets too hot, the enzyme can change shape. The substrate may no longer fit into the active site.';
+    }
+
+    const activity = Math.round(clamp(phActivity * tempActivity * 100, 0, 100));
+    fill.style.width = activity + '%';
+    meter.setAttribute('aria-valuenow', activity);
+    let heading;
+    let detail;
+    if (t >= 60) {
+      heading = 'Very low activity — likely denatured';
+      detail = 'The temperature is very high. The enzyme’s structure can change, so its active site may no longer fit the substrate. Cooling it again may not restore the original shape.';
+    } else if (phActivity < 0.05) {
+      heading = 'Almost no activity — unsuitable pH';
+      detail = selected === 'pepsin'
+        ? 'Pepsin works best at about pH 2. At pH ' + p.toFixed(1) + ', which is neutral or alkaline, pepsin has almost no activity. The pH can disrupt the bonds that help maintain its active-site shape, so the substrate cannot bind effectively.'
+        : 'This pH is far from this enzyme’s optimum (' + enzyme.phLabel + '). Its active site may change shape, so the substrate cannot bind effectively.';
+    } else if (activity >= 75) {
+      heading = 'High activity';
+      detail = 'These conditions suit the enzyme, so the substrate can fit into its active site.';
+    } else if (activity >= 40) {
+      heading = 'Moderate activity';
+      detail = 'The enzyme can still work, but the conditions are not ideal. Fewer enzyme-substrate complexes form in a given time.';
+    } else if (t < 15) {
+      heading = 'Low activity — too cold';
+      detail = 'The enzyme and substrate move more slowly, so they collide less often. The enzyme usually keeps its shape and can become more active when warmed.';
+    } else {
+      heading = 'Low activity — unsuitable pH or temperature';
+      detail = 'The pH or temperature is not right for this enzyme, so the substrate does not fit as easily.';
+    }
+    status.textContent = heading;
+    explanation.textContent = detail + ' Estimated relative activity: ' + activity + '%.';
+
+    // Show what happens to the selected enzyme as its temperature changes.
+    const sceneTitle = root.querySelector('#sceneTitle');
+    const sceneDescription = root.querySelector('#sceneDescription');
+    const sceneTempLabel = root.querySelector('#sceneTempLabel');
+    const enzymeShape = root.querySelector('#enzymeShape');
+    const activeSite = root.querySelector('#activeSite');
+    const substrateShape = root.querySelector('#substrateShape');
+    if (sceneTitle && enzymeShape && activeSite && substrateShape) {
+      sceneTitle.textContent = 'What happens to ' + enzyme.name + '?';
+      let shapePath, sitePath, sceneText, sceneLabel, enzymeFill, enzymeStroke;
+      if (t >= 60) {
+        shapePath = 'M62 88 C48 58 94 43 111 65 C130 30 156 63 173 50 C206 43 216 91 188 105 C221 132 175 166 151 143 C122 170 92 137 83 145 C52 142 45 111 62 88 Z';
+        sitePath = 'M162 68 Q145 84 164 96 Q145 111 163 126';
+        sceneText = 'It is too hot. The enzyme changes shape, which means the substrate may no longer fit. This is called denaturation.';
+        sceneLabel = t + '°C · active site changed (denatured)';
+        enzymeFill = '#c98b83'; enzymeStroke = '#87433c';
+      } else if (phUnsuitable) {
+        shapePath = 'M62 88 C48 58 94 43 111 65 C130 30 156 63 173 50 C206 43 216 91 188 105 C221 132 175 166 151 143 C122 170 92 137 83 145 C52 142 45 111 62 88 Z';
+        sitePath = 'M162 68 Q145 84 164 96 Q145 111 163 126';
+        sceneText = selected === 'pepsin' && p > enzyme.ph
+          ? 'Pepsin works best at about pH 2. At pH ' + p.toFixed(1) + ', the conditions are much less acidic than its optimum, so pepsin has almost no activity and the substrate cannot bind effectively.'
+          : 'The pH is far from this enzyme’s usual optimum (' + enzyme.phLabel + '). Very acidic or alkaline conditions can disrupt bonds that help maintain its shape, changing the active site so the substrate may no longer fit.';
+        sceneLabel = 'pH ' + p.toFixed(1) + ' · substrate no longer fits';
+        enzymeFill = '#c98b83'; enzymeStroke = '#87433c';
+      } else if (t > 42) {
+        shapePath = 'M65 92 C65 48 105 43 130 59 C151 36 199 53 194 88 C218 110 192 151 160 145 C137 165 91 150 91 132 C70 130 57 113 65 92 Z';
+        sitePath = 'M169 75 Q151 88 169 103';
+        sceneText = "The temperature is above the enzyme's best range, so it is becoming less active. If it gets too hot, its shape can change.";
+        sceneLabel = t + '°C · activity falling';
+        enzymeFill = '#d9ad70'; enzymeStroke = '#8b642c';
+      } else if (t < 15) {
+        shapePath = 'M65 92 C65 48 105 43 130 59 C151 36 199 53 194 88 C218 110 192 151 160 145 C137 165 91 150 91 132 C70 130 57 113 65 92 Z';
+        sitePath = 'M169 75 Q151 88 169 103';
+        sceneText = 'When it is cold, the enzyme keeps its shape, but it works more slowly because the enzyme and substrate move around less.';
+        sceneLabel = t + '°C · same shape, slower reaction';
+        enzymeFill = '#80b7a5'; enzymeStroke = '#245d51';
+      } else {
+        shapePath = 'M65 92 C65 48 105 43 130 59 C151 36 199 53 194 88 C218 110 192 151 160 145 C137 165 91 150 91 132 C70 130 57 113 65 92 Z';
+        sitePath = 'M169 75 Q151 88 169 103';
+        sceneText = 'At this temperature, the enzyme is working well. The substrate can fit into the active site, so the reaction happens faster.';
+        sceneLabel = t + '°C · substrate can fit';
+        enzymeFill = '#80b7a5'; enzymeStroke = '#245d51';
+      }
+      enzymeShape.setAttribute('d', shapePath);
+      enzymeShape.setAttribute('fill', enzymeFill);
+      enzymeShape.setAttribute('stroke', enzymeStroke);
+      activeSite.setAttribute('d', sitePath);
+      activeSite.setAttribute('stroke', enzymeStroke);
+      substrateShape.style.transform = (t >= 60 || phUnsuitable ? 'translate(0px, 18px) rotate(20deg)' : 'translate(0, 0)');
+      substrateShape.style.transformOrigin = '390px 98px';
+      sceneDescription.textContent = sceneText;
+      sceneTempLabel.textContent = sceneLabel;
+    }
+
+    // Draw the temperature-response curve for the selected enzyme at the chosen pH.
+    if (graphCurve && graphDot && graphGuide) {
+      const points = [];
+      for (let degree = 0; degree <= 80; degree += 2) {
+        let curveTemp;
+        if (degree <= 37) {
+          curveTemp = 0.25 + 0.75 * (degree / 37);
+        } else {
+          curveTemp = Math.exp(-Math.pow((degree - 37) / 13, 2) * 1.7);
+        }
+        const curveActivity = clamp(phActivity * curveTemp * 100, 0, 100);
+        const x = 30 + (degree / 80) * 275;
+        const y = 122 - (curveActivity / 100) * 112;
+        points.push(x.toFixed(1) + ',' + y.toFixed(1));
+      }
+      graphCurve.setAttribute('points', points.join(' '));
+      const markerX = 30 + (t / 80) * 275;
+      const markerY = 122 - (activity / 100) * 112;
+      graphDot.setAttribute('cx', markerX.toFixed(1));
+      graphDot.setAttribute('cy', markerY.toFixed(1));
+      graphGuide.setAttribute('x1', markerX.toFixed(1));
+      graphGuide.setAttribute('x2', markerX.toFixed(1));
+      if (graphCaption) {
+        graphCaption.textContent = 'At ' + t + '°C and pH ' + p.toFixed(1) + ': estimated activity is ' + activity + '%.';
+      }
+    }
+  }
+
+  root.querySelectorAll('[data-enzyme]').forEach(function(button){
+    button.addEventListener('click', function(){
+      selected = button.getAttribute('data-enzyme');
+      root.querySelectorAll('[data-enzyme]').forEach(function(other){
+        other.setAttribute('aria-pressed', String(other === button));
+      });
+      ph.value = enzymes[selected].ph;
+      temp.value = 37;
+      update();
+    });
+  });
+  ph.addEventListener('input', update);
+  temp.addEventListener('input', update);
+  update();
+})();
+</script>
+
+</body>
+</html>
